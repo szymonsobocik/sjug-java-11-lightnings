@@ -1,49 +1,247 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+    <title>SJUG - Lightning talk</title>
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/black.css">
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.type = 'text/css'
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css'
+        document.getElementsByTagName('head')[0].appendChild(link)
+    </script>
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h2>Java 11 SJUG Lightning talks</h2>
+            <h3>Co usunięto / będzie do usunięcia</h3>
+            <h3>licencja</h3>
+            <p>
+                <small>Szymon Sobocik</small>
+            </p>
+        </section>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+        <section>
+            O mnie
+            <!--todo szymon-->
+        </section>
 
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				]
-			});
-		</script>
-	</body>
+        <section>
+            <h2>Agenda</h2>
+            <ul>
+                <li class="fragment">Usunięte
+                    <!--<small>-->
+                    <!--<ul>-->
+                    <!--<li class="fragment">JEP 320 - Remove Java EE and CORBA Modules</li>-->
+                    <!--<li class="fragment">JEP 335 - Deprecate the Nashorn JavaScript Engine</li>-->
+                    <!--<li class="fragment">JEP 336 - Deprecate the Pack200 Tools and API</li>-->
+                    <!--<li class="fragment">API - Thread.destroy(), Thread.stop(), etc.</li>-->
+                    <!--</ul>-->
+                    <!--</small>-->
+                </li>
+                <li class="fragment">Do usunięcia</li>
+                <li class="fragment">Licencjonowanie<br>
+                    <!--<small>-->
+                    <!--<ul>-->
+                    <!--<li class="fragment">za co płacimy a za co nie</li>-->
+                    <!--<li class="fragment">LTS</li>-->
+                    <!--<li class="fragment">OracleJDK vs OpenJDK</li>-->
+                    <!--</ul>-->
+                    <!--</small>-->
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>JEP 320 - Remove Java EE and CORBA Modules</h2>
+        </section>
+
+        <section>
+            <h3>JEP 320 - Remove Java EE and CORBA Modules</h3>
+            <section>
+                <ul>
+                    <li>Deprecated in JDK 9</li>
+                </ul>
+
+            </section>
+
+            <section>
+                <h4>Java EE modules</h4>
+                <ul>
+                    <li>JAX-WS (Java API for XML-Based Web Services)</li>
+                    <li>JAXB (Java Architecture for XML Binding)</li>
+                    <li>JAF (the JavaBeans Activation Framework)</li>
+                    <li>Common Annotations</li>
+                </ul>
+
+                <aside class="notes">
+                    <br>Na początku wersje w Java SE były identyczne z wersjami w Java EE.
+                    <br>Później wersje w Java EE ewoluowały:
+                    <br>- ficzery nie mające znaczenia dla Java SE
+                    <br>- problemy z utrzymaniem
+                    <br>- było możliwe pobranie wersji standalone i nadpisanie, ale żadko to było stosowane
+                </aside>
+            </section>
+
+            <section>
+                <h4>CORBA</h4>
+                <ul>
+                    <li>Dates back to 1998 (Java 1.4)</li>
+                    <li>Evolves outside Java Community Process</li>
+                    <li>No modern applications with CORBA in Java</li>
+                </ul>
+                <aside class="notes">
+                    dates back to 1998
+                    <br>- żyje osobno
+                </aside>
+            </section>
+
+            <section>
+                <h4>Subsets of Java EE modules</h4>
+                <ul>
+                    <li>JTA (Java Transaction API) - Java 1.3
+
+                    <li>J2EE Activity Service for Extended Transactions - Java 1.5</li>
+                </ul>
+            </section>
+
+            <section>
+                <h4>Modules removed</h4>
+                <p>
+                    <code class="hljs">
+                        <pre>
+java.xml.ws (JAX-WS, plus the related technologies SAAJ and Web Services Metadata)
+java.xml.bind (JAXB)
+java.activation (JAF)
+java.xml.ws.annotation (Common Annotations)
+java.corba (CORBA)
+java.transaction (JTA)
+java.se.ee (Aggregator module for the six modules above)
+jdk.xml.ws (Tools for JAX-WS)
+jdk.xml.bind (Tools for JAXB)
+                            </pre>
+                    </code>
+                </p>
+            </section>
+
+        </section>
+
+        <section>
+            <h2>JEP 335 - Deprecate the Nashorn JavaScript Engine</h2>
+            <!--todo szymon-->
+        </section>
+
+
+        <section>
+            <h2>JEP 336 - Deprecate the Pack200 Tools and API</h2>
+            <!--todo szymon-->
+        </section>
+
+        <section>
+            <h2>API - Thread.destroy(), Thread.stop(), etc.</h2>
+            <!--todo szymon-->
+        </section>
+
+        <!--todo szymon
+        todo Licencjonowanie: LST, za co płacimy a za co nie, OracleJDK vs OpenJDK, inni wendorzy-->
+
+        <section>
+            <h2>Future</h2>
+            <ul>
+                <li>Release Cadence</li>
+                <li>Licence</li>
+                <li>OracleJDK vs OpenJDK</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>Release Cadence</h3>
+            <section>
+                <h4>Before</h4>
+                <p>Plan:</p>
+                <ul>
+                    <li>release by flagship features</li>
+                    <li>major release every 2 years</li>
+                </ul>
+
+                <p class="fragment">Reality:</p>
+                <ul class="fragment">
+                    <li>Java 7 took 5 years</li>
+                    <li>Java 8 took 3 years</li>
+                    <li>Java 9 took 3.5 years</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Now</h3>
+                <ul>
+                    <li class="fragment">Fixed six-month release cadence<br>
+                    March and September</li>
+                    <li class="fragment">Ship everything that is ready</li>
+                    <li class="fragment">All are major releases - no `beta versions`</li>
+                </ul>
+
+                <aside class="notes">
+                    Wszystko co będzie skończone będzie wypuszczane.
+                    <br>+ completed features get out earlier
+                </aside>
+            </section>
+
+        </section>
+        <section>
+
+        </section>
+        <section>
+
+        </section>
+        <section>
+
+        </section>
+        <section>
+
+        </section>
+    </div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+
+<!--todo szymon-->
+
+<!--http://cr.openjdk.java.net/~iris/se/11/spec/pfd/java-se-11-pfd-spec/#Feature-summary-->
+
+
+<script>
+    // More info about config & dependencies:
+    // - https://github.com/hakimel/reveal.js#configuration
+    // - https://github.com/hakimel/reveal.js#dependencies
+    Reveal.initialize({
+        width: 1200,
+        history: true,
+        dependencies: [
+            {src: 'plugin/markdown/marked.js'},
+            {src: 'plugin/markdown/markdown.js'},
+            {src: 'plugin/notes/notes.js', async: true},
+            {
+                src: 'plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad()
+                }
+            }
+        ]
+    })
+</script>
+</body>
 </html>
